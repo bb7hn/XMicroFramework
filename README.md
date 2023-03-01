@@ -23,6 +23,6 @@
 - edit config.php for credentials
 - Go to http://127.0.0.1:8000/setup.php
 
-That's it now you have a running microservice on [http://127.0.0.1:8000]()
+That's it now you have a running microservice on http://127.0.0.1:8000
 
 You can find [here](https://bb7hn.github.io/XMicro/) the detailed docs for XMicro
