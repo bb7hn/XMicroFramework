@@ -1,22 +1,49 @@
 <?php
-// If YOU WANNA QUICK SETUP
-// run=> `php -S 127.0.0.1:8000` on command line and go to http://127.0.0.1:8000/setup.php
-// then delete the file
+/** @var TYPE_NAME $dbHost */
+/** @var TYPE_NAME $dbName */
+/** @var TYPE_NAME $dbUser */
+
+/** @var TYPE_NAME $dbPassword */
+
 use XMicro\MicroService;
 
 require_once 'vendor/autoload.php';
-// INIT CLASS
-// NOTE THAT: IF DEBUGGER ENABLED YOU'LL SEE ONLY QUERIES. NONE OF THEM WILL RUN
+require_once 'config.php';
 $service = new MicroService(true);
-$db = $service->conn_mysql('localhost', 'x-micro', 'root', '');
 
-// CREATE EXAMPLE
+$db = $service->conn_mysql(DatabaseServer: $dbHost, DatabaseName: $dbName, DatabaseUser: $dbUser, DatabasePassword: $dbPassword);
+
+// users table structure
 $usersStructure = [
     'id' => 'INT(11) AUTO_INCREMENT PRIMARY KEY',
-    'email' => 'VARCHAR(255)',
-    'password' => 'VARCHAR(255)'
+    'email' => 'VARCHAR(255) NOT NULL',
+    'username' => 'VARCHAR(255) NOT NULL',
+    'password' => 'VARCHAR(255) NOT NULL'
 ];
-
-//$db->create('test', $structure,true); if you set third parameter true
-//function will handle creating last 3 columns (created_at ,updated_at and deleted_at)
 $db->create('users', $usersStructure, true);
+
+$users = [
+    [
+        'email' => 'test@test.com',
+        'username' => 'test',
+        'password' => '123123'
+    ]
+];
+$db->insert('users', $users);
+
+$configStructure = [
+    'id' => 'INT(11) AUTO_INCREMENT PRIMARY KEY',
+    'jwt_secret_key' => 'TEXT',
+    'maintenance' => 'BOOLEAN DEFAULT FALSE'
+];
+$db->create('config', $configStructure, true);
+
+$defaultConfig = [
+    [
+        'jwt_secret_key' => uniqid('xMicro_', true),
+        'maintenance' => 0
+    ]
+];
+$db->insert('config', $defaultConfig);
+
+unlink(__FILE__);
