@@ -6,10 +6,8 @@ date_default_timezone_set('Europe/Istanbul');
 error_reporting(0);
 // DISABLE DEBUGGER
 $debugger = false;
-// DEFINE JWT SECRET KEY
-$JWT_KEY = 'my_temp_top_secret_key';
 // DEFINE DATABASE CONFIG
 $dbHost = 'localhost';
-$dbName = 'x-micro';
+$dbName = 'X';
 $dbUser = 'root';
 $dbPassword = '';

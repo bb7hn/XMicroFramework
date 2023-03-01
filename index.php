@@ -24,6 +24,10 @@ $json = file_get_contents('php://input');
 $data = json_decode($json);
 try {
     $db = $service->conn_mysql($dbHost, $dbName, $dbUser, $dbPassword);
+
+    // DEFINE JWT SECRET KEY
+    $JWT_KEY = ($db->select('config')['jwt_secret_key'] ?? 'temp_secret_key');
+
     // check does body have service index
     if (!isset($data->service) || gettype($data->service) !== "string") {
         $response = [
