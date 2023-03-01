@@ -12,8 +12,12 @@
   mkdir my-project
   cd my-project
   git clone https://github.com/bb7hn/XMicroFramework.git .
-  php -S 127.0.0.1:8000
 ```
+
+````shell
+  composer install
+  php -S 127.0.0.1:8000
+````
 
 - create an empty database
 - edit config.php for credentials
