@@ -1,12 +1,12 @@
 <?php
 // IF YOU DON'T HAVE ANY SPECIFIC CASES EDITING THIS FILE IS NOt SUGGESTED
 
-/** @var TYPE_NAME $debugger */
-/** @var TYPE_NAME $dbHost */
-/** @var TYPE_NAME $dbName */
-/** @var TYPE_NAME $dbUser */
+/** @var boolean $debugger */
+/** @var string $dbHost */
+/** @var string $dbName */
+/** @var string $dbUser */
 
-/** @var TYPE_NAME $dbPassword */
+/** @var string $dbPassword */
 
 use XMicro\MicroService;
 
