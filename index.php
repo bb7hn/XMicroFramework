@@ -1,12 +1,12 @@
 <?php
 // IF YOU DON'T HAVE ANY SPECIFIC CASES EDITING THIS FILE IS NOt SUGGESTED
 
-/** @var TYPE_NAME $debugger */
-/** @var TYPE_NAME $dbHost */
-/** @var TYPE_NAME $dbName */
-/** @var TYPE_NAME $dbUser */
+/** @var boolean $debugger */
+/** @var string $dbHost */
+/** @var string $dbName */
+/** @var string $dbUser */
 
-/** @var TYPE_NAME $dbPassword */
+/** @var string $dbPassword */
 
 use XMicro\MicroService;
 
@@ -28,14 +28,10 @@ try {
     // DEFINE JWT SECRET KEY
     $JWT_KEY = ($db->select('config')['jwt_secret_key'] ?? 'temp_secret_key');
 
-    // check does body have service index
+    // check does body has service index
     if (!isset($data->service) || gettype($data->service) !== "string") {
-        $response = [
-            "message" => "no service defined",
-            "code" => 400
-        ];
-        $service->response($response, $response['code']);
-        exit();
+        // if doesn't have handle requested url in router and set service or return "invalid service" response
+        require_once "router.php";
     }
 
     $file = __DIR__ . "/services/$data->service.php";
