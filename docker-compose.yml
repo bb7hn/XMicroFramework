@@ -1,0 +1,32 @@
+version: '3.9'
+
+services:
+  backend:
+    environment:
+      APP_ENV: local
+      DOCKER: yes
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - '8000:80'
+    volumes:
+      - ./:/var/www/html
+
+  db:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: xMicro
+      MYSQL_ALLOW_EMPTY_PASSWORD: yes
+    ports:
+      - '33060:33060'
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_HOST: db
+      PMA_USER: root
+    ports:
+      - '8080:80'
+    restart: always

@@ -48,6 +48,13 @@ try {
 
     require_once($file);
 } catch (throwable $exception) {
+    if(getenv('APP_ENV') === 'local'){
+        header("Content-Type: text/plain");
+        //If ENV iS noy dev(local) delete file after executed
+        require_once 'setup.php';
+        exit();
+    }
+
     $response = [
         "message" => "Internal server error! Service unavailable.",
         "code" => 500

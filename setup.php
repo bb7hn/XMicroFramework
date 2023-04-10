@@ -1,9 +1,9 @@
 <?php
-/** @var TYPE_NAME $dbHost */
-/** @var TYPE_NAME $dbName */
-/** @var TYPE_NAME $dbUser */
+/** @var string $dbHost */
+/** @var string $dbName */
+/** @var string $dbUser */
 
-/** @var TYPE_NAME $dbPassword */
+/** @var string $dbPassword */
 
 use XMicro\MicroService;
 
@@ -46,4 +46,8 @@ $defaultConfig = [
 ];
 $db->insert('config', $defaultConfig);
 
-unlink(__FILE__);
+if(getenv('APP_ENV') !== 'local'){
+    //If ENV iS noy dev(local) delete file after executed
+    unlink(__FILE__);
+}
+
