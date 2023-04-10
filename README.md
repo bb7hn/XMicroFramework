@@ -19,16 +19,16 @@
 ````
 Note: serving with php locally is requires mysql pdo
 
+- create an empty database (mysql/mariadb)
+- edit config.php for credentials
+- Go to http://127.0.0.1:8000/setup.php
+
 ### DOCKER
 - just run
 ````shell
   docker compose up --build 
 ````
 
-- create an empty database (mysql/mariadb)
-- edit config.php for credentials
-- Go to http://127.0.0.1:8000/setup.php
-
-That's it now you have a running microservice on [http://127.0.0.1:8000]()
+That's it now you have a running microservice on [http://127.0.0.1:8000]() / [http://localhost:8000]()
 
 You can find [here](https://bb7hn.github.io/XMicro/) the detailed docs for XMicro
