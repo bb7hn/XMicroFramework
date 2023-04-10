@@ -29,6 +29,6 @@ Note: serving with php locally is requires mysql pdo
   docker compose up --build 
 ````
 
-That's it now you have a running microservice on [http://127.0.0.1:8000]() / [http://localhost:8000]()
+That's it now you have a running microservice on http://127.0.0.1:8000 / http://localhost:8000
 
 You can find [here](https://bb7hn.github.io/XMicro/) the detailed docs for XMicro
