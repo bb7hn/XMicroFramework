@@ -12,10 +12,20 @@
   mkdir my-project
   cd my-project
   git clone https://github.com/bb7hn/XMicroFramework.git .
-  php -S 127.0.0.1:8000
 ```
+- serve with php
+````shell
+  php -S 127.0.0.1:8000
+````
+Note: serving with php locally is requires mysql pdo
 
-- create an empty database
+### DOCKER
+- just run
+````shell
+  docker compose up --build 
+````
+
+- create an empty database (mysql/mariadb)
 - edit config.php for credentials
 - Go to http://127.0.0.1:8000/setup.php
 
