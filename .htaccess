@@ -1,2 +1,7 @@
 RewriteEngine On
+
+# Check if the requested file exists
+RewriteCond %{REQUEST_FILENAME} !-f
+
+# Apply the rewrite rule if the requested file doesn't exist
 RewriteRule ^(.*)$ index.php [L]
